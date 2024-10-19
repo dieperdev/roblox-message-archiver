@@ -19,6 +19,11 @@ def archive_inbox(session: Session, archive_individual_messages: bool) -> None:
         total_messages = response_json['totalCollectionSize']
         total_pages = response_json['totalPages']
 
+        if total_messages == 0:
+            print('No messages were found in the INBOX category.')
+
+            break
+
         for message in inbox_messages:
             message_id = message['id']
 
