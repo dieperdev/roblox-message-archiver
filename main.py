@@ -19,7 +19,7 @@ def main():
     session = requests.Session()
     session.cookies['.ROBLOSECURITY'] = roblosecurity
 
-    archive_inbox(session=session)
+    archive_inbox(session=session, archive_individual_messages=archive_individual_messages)
 
 if __name__ == '__main__':
     if not roblosecurity:
