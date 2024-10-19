@@ -17,10 +17,12 @@ archive_individual_messages = os.environ.get('ARCHIVE_INDIVIDUAL')
 
 def main():
     Path('archives').mkdir(exist_ok=True)
-    Path('archives/inbox').mkdir(exist_ok=True)
-    Path('archives/sent').mkdir(exist_ok=True)
-    Path('archives/news').mkdir(exist_ok=True)
-    Path('archives/archive').mkdir(exist_ok=True)
+
+    if archive_individual_messages:
+        Path('archives/inbox').mkdir(exist_ok=True)
+        Path('archives/sent').mkdir(exist_ok=True)
+        Path('archives/news').mkdir(exist_ok=True)
+        Path('archives/archive').mkdir(exist_ok=True)
 
     session = requests.Session()
     session.cookies['.ROBLOSECURITY'] = roblosecurity
