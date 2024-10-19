@@ -3,6 +3,7 @@ import requests
 
 from inbox_archiver import archive_inbox
 from sent_archiver import archive_sent
+from archived_archiver import archive_archived
 from verify_roblosecurity import verify_cookie
 
 from pathlib import Path
@@ -17,12 +18,14 @@ def main():
     Path('archives').mkdir(exist_ok=True)
     Path('archives/inbox').mkdir(exist_ok=True)
     Path('archives/sent').mkdir(exist_ok=True)
+    Path('archives/archive').mkdir(exist_ok=True)
 
     session = requests.Session()
     session.cookies['.ROBLOSECURITY'] = roblosecurity
 
     archive_inbox(session=session, archive_individual_messages=archive_individual_messages)
     archive_sent(session=session, archive_individual_messages=archive_individual_messages)
+    archive_archived(session=session, archive_individual_messages=archive_individual_messages)
 
 if __name__ == '__main__':
     if not roblosecurity:
