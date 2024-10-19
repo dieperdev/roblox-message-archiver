@@ -58,7 +58,7 @@ def archive_archived(session: Session, archive_individual_messages: bool) -> Non
 
             messages_archived += 1
 
-        print(f'Archived {messages_archived:,}/{total_messages:,} messages from ARCHIVE ({current_page} pages) so far. {(total_pages - current_page):,} pages ({(total_messages - messages_archived):,} messages) remain.')
+        print(f'Saved {messages_archived:,}/{total_messages:,} messages from ARCHIVE ({current_page} pages) so far. {(total_pages - current_page):,} pages ({(total_messages - messages_archived):,} messages) remain.')
 
         if current_page == total_pages:
             break
