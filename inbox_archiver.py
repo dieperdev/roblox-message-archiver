@@ -58,7 +58,7 @@ def archive_inbox(session: Session, archive_individual_messages: bool) -> None:
 
             messages_archived += 1
 
-        print(f'Saved {messages_archived:,}/{total_messages:,} messages from INBOX ({current_page} pages) so far. {(total_pages - current_page):,} pages ({(total_messages - messages_archived):,} messages) remain.')
+        print(f'Saved {messages_archived:,}/{total_messages:,} messages ({current_page} pages) from the INBOX category so far. {(total_pages - current_page):,} pages ({(total_messages - messages_archived):,} messages) remain.')
 
         if current_page == total_pages:
             break

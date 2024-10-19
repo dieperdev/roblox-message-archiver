@@ -42,7 +42,7 @@ def archive_news(session: Session, archive_individual_messages: bool) -> None:
 
         messages_archived += 1
 
-    print(f'Saved {messages_archived} messages from NEWS.')
+    print(f'Saved {messages_archived} messages from the NEWS category.')
 
     with open('archives/news.json', 'w') as f:
         f.write(json.dumps(messages))
