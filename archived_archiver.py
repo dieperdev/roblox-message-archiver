@@ -52,7 +52,7 @@ def archive_archived(session: Session, archive_individual_messages: bool) -> Non
 
             if archive_individual_messages:
                 with open(f'archives/archive/{message_id}.json', 'w') as f:
-                    f.write(json.dumps(message_data))
+                    f.write(json.dumps(message_data, indent=4))
 
             messages.append(message_data)
 
@@ -66,4 +66,4 @@ def archive_archived(session: Session, archive_individual_messages: bool) -> Non
         page_offset += 1
 
     with open('archives/archive.json', 'w') as f:
-        f.write(json.dumps(messages))
+        f.write(json.dumps(messages, indent=4))

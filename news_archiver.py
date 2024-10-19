@@ -36,7 +36,7 @@ def archive_news(session: Session, archive_individual_messages: bool) -> None:
 
         if archive_individual_messages:
             with open(f'archives/news/{message_id}.json', 'w') as f:
-                f.write(json.dumps(message_data))
+                f.write(json.dumps(message_data, indent=4))
 
         messages.append(message_data)
 
@@ -45,4 +45,4 @@ def archive_news(session: Session, archive_individual_messages: bool) -> None:
     print(f'Saved {messages_archived} messages from the NEWS category.')
 
     with open('archives/news.json', 'w') as f:
-        f.write(json.dumps(messages))
+        f.write(json.dumps(messages, indent=4))

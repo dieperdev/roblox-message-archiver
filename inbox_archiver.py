@@ -52,7 +52,7 @@ def archive_inbox(session: Session, archive_individual_messages: bool) -> None:
 
             if archive_individual_messages:
                 with open(f'archives/inbox/{message_id}.json', 'w') as f:
-                    f.write(json.dumps(message_data))
+                    f.write(json.dumps(message_data, indent=4))
 
             messages.append(message_data)
 
@@ -66,4 +66,4 @@ def archive_inbox(session: Session, archive_individual_messages: bool) -> None:
         page_offset += 1
 
     with open('archives/inbox.json', 'w') as f:
-        f.write(json.dumps(messages))
+        f.write(json.dumps(messages, indent=4))
