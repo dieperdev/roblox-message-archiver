@@ -6,6 +6,8 @@
 
 ### Roblox Message Archiver is a utility to archive messages from your Roblox Inbox (and other categories). Roblox has announced that they are [removing user-to-user inbox messaging](https://devforum.roblox.com/t/sunsetting-user-to-user-inbox-messaging/3187502) via the Messages (not Chat) feature on October 29th, 2024.
 
+#### NOTE: I will be working on a tool that will transform your messages into a browsable document. Expect this in a few weeks.
+
 ## Table of contents
 - [Why you should archive your messages](#why-should-you-archive-your-messages)
 - [Is this script safe?](#is-this-script-safe)
