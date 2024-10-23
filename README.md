@@ -25,13 +25,13 @@ Roblox doesn't always act in the community's best interest. Roblox said they wou
 This script is completely safe. It does not send any of your messages or your cookie anywhere besides Roblox servers. Your data remains on your device. You can look through the source code and verify this yourself.
 
 ## Prerequisites
-Before you continue, you'll need to [install python](https://www.python.org/). This script should work with `python >= 3.8`. If you're on MacOS, Linux, or another Unix based system, you may need to use a package manager to install python.
+Before you continue, you'll need to install python using the [official site](https://www.python.org/) or the [Microsoft Store](https://apps.microsoft.com/detail/9ncvdn91xzqp/) on Windows (easier for newbies, make sure to check `ADD TO PATH` on installation!). This script should work with `python >= 3.8`. If you're on MacOS, Linux, or another Unix based system, you may need to use a package manager to install python.
 
 ## Installation
 1. Clone the repo
     - Method 1 (git): `git clone https://github.com/dieperdev/roblox-message-archiver.git`
     - Method 2 (zip file): Download the repo as a zip file and extract it
-2. Open the folder where you installed the repo
+2. Open the folder where you installed the repo and open a terminal in that folder
 3. Create a virtual environment
     - Windows: `python -m venv venv`
     - MacOS/Linux (or other Unix systems): `python3 -m venv venv`
