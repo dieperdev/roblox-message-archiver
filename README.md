@@ -52,17 +52,26 @@ Open `.env.example` and edit the variables in the file. You should place your co
 After the previous steps, you need to rename the `.env.example` file to `.env`.
 
 ## Running the script
+#### Read before running:
+If you have previously ran the script and:
+- Moved one of your messages between categories (like inbox to archived)
+- or did an operation on the message (like mark it as read or delete)
+
+Then you will need to **delete your existing `archive.db` file so the database can be updated**.
+
 - Windows: `python src/main.py`.
 - MacOS/Linux (or other Unix systems): `python3 src/main.py`
 
 ## Finding your messages
+### **If you enabled `ARCHIVE_INDIVIDUAL` in your `.env` file:**
 Your messages can be found in the `archives` directory. Messages are named by their message id and can be found in the following folders:
 - `archives/inbox`
 - `archives/sent`
 - `archives/news`
 - `archives/archive`
 
-There is also `inbox.json`, `sent.json`, `news.json`, and `archive.json` files in the `archive` directory that contain all the messsages in the corresponding category.
+### **If you didn't enable `ARCHIVE_INDIVIDUAL` in your `.env` file:** (these files will still exist if you enable it)
+There is also `inbox.json`, `sent.json`, `news.json`, and `archive.json` files in the `archive` directory that contain all the messsages in the corresponding category. An `archive.db` file is also included for easy access to messages and for converting your messages into a browsable document.
 
 ## License
 ### [MIT License](https://opensource.org/licenses/MIT)
