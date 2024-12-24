@@ -116,6 +116,9 @@ def main():
 
     sqlite_conn.commit()
 
+    sqlite_cursor.close()
+    sqlite_conn.close()
+
 if __name__ == '__main__':
     if not roblosecurity:
         print('A ROBLOSECURITY cookie is required to continue.')
