@@ -70,6 +70,22 @@ def create_sqlite_tables(cursor: Cursor):
         );
     ''')
 
+    # Table for news messages
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS news (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            message_id LONG INTEGER UNIQUE NOT NULL,
+            sender_id INTEGER NOT NULL,
+            sender_verified BOOLEAN NOT NULL,
+            sender_username VARCHAR(64) NOT NULL,
+            sender_display_name VARCHAR(64) NOT NULL,
+            created REAL NOT NULL,
+            updated REAL NOT NULL,
+            subject TEXT NOT NULL,
+            body TEXT NOT NULL
+        );
+    ''')
+
     # Table for archived messages
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS archived (
@@ -111,7 +127,7 @@ def main():
 
     archive_inbox(session=session, archive_individual_messages=archive_individual_messages, cursor=sqlite_cursor)
     archive_sent(session=session, archive_individual_messages=archive_individual_messages, cursor=sqlite_cursor)
-    archive_news(session=session, archive_individual_messages=archive_individual_messages)
+    archive_news(session=session, archive_individual_messages=archive_individual_messages, cursor=sqlite_cursor)
     archive_archived(session=session, archive_individual_messages=archive_individual_messages, cursor=sqlite_cursor)
 
     sqlite_conn.commit()
