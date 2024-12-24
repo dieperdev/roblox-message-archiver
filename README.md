@@ -52,8 +52,8 @@ Open `.env.example` and edit the variables in the file. You should place your co
 After the previous steps, you need to rename the `.env.example` file to `.env`.
 
 ## Running the script
-- Windows: `python main.py`.
-- MacOS/Linux (or other Unix systems): `python3 main.py`
+- Windows: `python src/main.py`.
+- MacOS/Linux (or other Unix systems): `python3 src/main.py`
 
 ## Finding your messages
 Your messages can be found in the `archives` directory. Messages are named by their message id and can be found in the following folders:
