@@ -9,7 +9,7 @@ from archived_archiver import archive_archived
 from verify_roblosecurity import verify_cookie
 
 from pathlib import Path
-from sqlite3 import Cursor
+from sqlite3 import Connection, Cursor
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -17,11 +17,11 @@ load_dotenv()
 roblosecurity = os.environ.get('ROBLOSECURITY')
 archive_individual_messages = os.environ.get('ARCHIVE_INDIVIDUAL')
 
-def get_sqlite_cursor() -> Cursor:
+def get_sqlite_connection() -> tuple[Connection, Cursor]:
     conn = sqlite3.connect('archive.db')
     cursor = conn.cursor()
 
-    return cursor
+    return (conn, cursor)
 
 def create_sqlite_tables(cursor: Cursor):
     # Table for inbox messages
@@ -105,16 +105,16 @@ def main():
     session = requests.Session()
     session.cookies['.ROBLOSECURITY'] = roblosecurity
 
-    sqlite_cursor = get_sqlite_cursor()
+    sqlite_conn, sqlite_cursor = get_sqlite_connection()
 
     create_sqlite_tables(sqlite_cursor)
 
-    exit()
-
-    archive_inbox(session=session, archive_individual_messages=archive_individual_messages)
-    archive_sent(session=session, archive_individual_messages=archive_individual_messages)
+    archive_inbox(session=session, archive_individual_messages=archive_individual_messages, cursor=sqlite_cursor)
+    archive_sent(session=session, archive_individual_messages=archive_individual_messages, cursor=sqlite_cursor)
     archive_news(session=session, archive_individual_messages=archive_individual_messages)
-    archive_archived(session=session, archive_individual_messages=archive_individual_messages)
+    archive_archived(session=session, archive_individual_messages=archive_individual_messages, cursor=sqlite_cursor)
+
+    sqlite_conn.commit()
 
 if __name__ == '__main__':
     if not roblosecurity:

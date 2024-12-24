@@ -1,10 +1,11 @@
 import json
 
+from sqlite3 import Cursor
 from time_to_utc import convert_timestamp_to_utc
 
 from requests import Session
 
-def archive_inbox(session: Session, archive_individual_messages: bool) -> None:
+def archive_inbox(session: Session, archive_individual_messages: bool, cursor: Cursor) -> None:
     page_offset = 0
 
     messages = []
@@ -55,6 +56,7 @@ def archive_inbox(session: Session, archive_individual_messages: bool) -> None:
                     f.write(json.dumps(message_data, indent=4))
 
             messages.append(message_data)
+            cursor.execute('INSERT INTO inbox (message_id, sender_id, sender_verified, sender_username, sender_display_name, recipient_id, recipient_verified, recipient_username, recipient_display_name, read, system_message, is_report_abuse_displayed, created, updated, subject, body) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);', (message_id, message_data['sender']['id'], message_data['sender']['verified'], message_data['sender']['username'], message_data['sender']['display_name'], message_data['recipient']['id'], message_data['recipient']['verified'], message_data['recipient']['username'], message_data['recipient']['display_name'], message_data['read'], message_data['system_message'], message_data['isReportAbuseDisplayed'], message_data['created'], message_data['updated'], message_data['subject'], message_data['body']))
 
             messages_archived += 1
 
