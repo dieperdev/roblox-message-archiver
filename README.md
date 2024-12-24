@@ -70,7 +70,7 @@ Your messages can be found in the `archives` directory. Messages are named by th
 - `archives/news`
 - `archives/archive`
 
-### **If you didn't enable `ARCHIVE_INDIVIDUAL` in your `.env` file:** (these will still exist if you enable it)
+### **If you didn't enable `ARCHIVE_INDIVIDUAL` in your `.env` file:** (these files will still exist if you enable it)
 There is also `inbox.json`, `sent.json`, `news.json`, and `archive.json` files in the `archive` directory that contain all the messsages in the corresponding category. An `archive.db` file is also included for easy access to messages and for converting your messages into a browsable document.
 
 ## License
