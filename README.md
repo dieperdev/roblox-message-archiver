@@ -52,6 +52,13 @@ Open `.env.example` and edit the variables in the file. You should place your co
 After the previous steps, you need to rename the `.env.example` file to `.env`.
 
 ## Running the script
+#### Read before running:
+If you have previously ran the script and:
+- Moved one of your messages between categories (like inbox to archived)
+- or did an operation on the message (like mark it as read or delete)
+
+Then you will need to **delete your existing `archive.db` file so the database can be updated**.
+
 - Windows: `python src/main.py`.
 - MacOS/Linux (or other Unix systems): `python3 src/main.py`
 
