@@ -24,9 +24,9 @@ def get_sqlite_cursor() -> Cursor:
     return cursor
 
 def create_sqlite_tables(cursor: Cursor):
-    # Inbox archive table
+    # Table for inbox messages
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS inbox_archive (
+        CREATE TABLE IF NOT EXISTS inbox (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             message_id LONG INTEGER NOT NULL,
             sender_id INTEGER NOT NULL,
@@ -47,9 +47,9 @@ def create_sqlite_tables(cursor: Cursor):
         );
     ''')
 
-    # Sent archive table
+    # Table for sent messages
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS sent_archive (
+        CREATE TABLE IF NOT EXISTS sent (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             message_id LONG INTEGER NOT NULL,
             sender_id INTEGER NOT NULL,
@@ -70,9 +70,9 @@ def create_sqlite_tables(cursor: Cursor):
         );
     ''')
 
-    # Archived archive table
+    # Table for archived messages
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS archived_archive (
+        CREATE TABLE IF NOT EXISTS archived (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             message_id LONG INTEGER NOT NULL,
             sender_id INTEGER NOT NULL,
