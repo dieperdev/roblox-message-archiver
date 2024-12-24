@@ -56,13 +56,15 @@ After the previous steps, you need to rename the `.env.example` file to `.env`.
 - MacOS/Linux (or other Unix systems): `python3 src/main.py`
 
 ## Finding your messages
+### **If you enabled `ARCHIVE_INDIVIDUAL` in your `.env` file:**
 Your messages can be found in the `archives` directory. Messages are named by their message id and can be found in the following folders:
 - `archives/inbox`
 - `archives/sent`
 - `archives/news`
 - `archives/archive`
 
-There is also `inbox.json`, `sent.json`, `news.json`, and `archive.json` files in the `archive` directory that contain all the messsages in the corresponding category.
+### **If you didn't enable `ARCHIVE_INDIVIDUAL` in your `.env` file:** (these will still exist if you enable it)
+There is also `inbox.json`, `sent.json`, `news.json`, and `archive.json` files in the `archive` directory that contain all the messsages in the corresponding category. An `archive.db` file is also included for easy access to messages and for converting your messages into a browsable document.
 
 ## License
 ### [MIT License](https://opensource.org/licenses/MIT)
