@@ -28,7 +28,7 @@ def create_sqlite_tables(cursor: Cursor):
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS inbox (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            message_id LONG INTEGER NOT NULL,
+            message_id LONG INTEGER UNIQUE NOT NULL,
             sender_id INTEGER NOT NULL,
             sender_verified BOOLEAN NOT NULL,
             sender_username VARCHAR(64) NOT NULL,
@@ -51,7 +51,7 @@ def create_sqlite_tables(cursor: Cursor):
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS sent (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            message_id LONG INTEGER NOT NULL,
+            message_id LONG INTEGER UNIQUE NOT NULL,
             sender_id INTEGER NOT NULL,
             sender_verified BOOLEAN NOT NULL,
             sender_username VARCHAR(64) NOT NULL,
@@ -74,7 +74,7 @@ def create_sqlite_tables(cursor: Cursor):
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS archived (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            message_id LONG INTEGER NOT NULL,
+            message_id LONG INTEGER UNIQUE NOT NULL,
             sender_id INTEGER NOT NULL,
             sender_verified BOOLEAN NOT NULL,
             sender_username VARCHAR(64) NOT NULL,
